@@ -22,7 +22,6 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .bnav-item.active .bnav-dot{opacity:1;}
 .page{display:none;padding:1rem;}
 .page.active{display:block;}
-/* home */
 .hero{text-align:center;padding:1.4rem 0.5rem 1rem;position:relative;overflow:hidden;}
 .deco{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
 .logo-ring{display:inline-flex;align-items:center;justify-content:center;width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#f8c8e0,#d4b8f0);margin-bottom:0.7rem;}
@@ -48,7 +47,6 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .info-text strong{color:#b060c0;display:block;font-size:0.72rem;margin-bottom:0.1rem;}
 .ftr{text-align:center;padding:1.3rem;background:linear-gradient(135deg,#fce8f0,#ede8fc);border-radius:18px 18px 0 0;margin-top:0.5rem;}
 .ftr-logo{font-size:1rem;font-weight:700;background:linear-gradient(135deg,#e07ab0,#9b72cf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-/* squeeze */
 .sq-banner{background:linear-gradient(135deg,#fce8f0,#ede8fc);border-radius:14px;padding:0.85rem 1rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
 .sq-banner-text{font-size:0.78rem;color:#9040b0;font-weight:700;line-height:1.5;}
 .sq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
@@ -58,33 +56,25 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .sq-name{font-size:0.76rem;font-weight:700;color:#b060c0;padding:0 0.5rem;line-height:1.35;}
 .sq-price{font-size:0.72rem;color:#c490b8;margin:0.2rem 0 0.45rem;}
 .sq-sold{display:inline-block;background:#f8e8f8;border-radius:99px;font-size:0.6rem;color:#c090c0;padding:0.12rem 0.5rem;margin-bottom:0.45rem;}
-/* 通常の購入ボタン（暗い状態） */
 .buy-btn{display:block;margin:0 0.6rem 0.75rem;padding:0.48rem;border-radius:10px;font-size:0.76rem;font-weight:700;font-family:inherit;border:1.5px solid #f0d8ea;background:white;cursor:default;pointer-events:none;position:relative;overflow:hidden;}
 .buy-btn::before{content:'';position:absolute;inset:0;background:white;opacity:0.85;}
 .buy-btn-inner{position:relative;z-index:1;color:#e0b8d8;}
-/* 光っている購入ボタン */
 .buy-btn.lit{background:linear-gradient(135deg,#ff6060,#ff2020);border:none;cursor:pointer;pointer-events:auto;animation:redPulse 1.2s ease-in-out infinite;}
 .buy-btn.lit::before{display:none;}
 .buy-btn.lit .buy-btn-inner{color:white;}
-@keyframes redPulse{
-  0%,100%{box-shadow:0 0 8px rgba(255,40,40,0.6);}
-  50%{box-shadow:0 0 20px rgba(255,40,40,0.95),0 0 32px rgba(255,80,80,0.4);}
-}
+@keyframes redPulse{0%,100%{box-shadow:0 0 8px rgba(255,40,40,0.6);}50%{box-shadow:0 0 20px rgba(255,40,40,0.95),0 0 32px rgba(255,80,80,0.4);}}
 .new-badge{position:absolute;top:0.4rem;right:0.4rem;background:linear-gradient(135deg,#f0a0cc,#c090e0);color:white;font-size:0.6rem;font-weight:700;border-radius:99px;padding:0.15rem 0.48rem;}
-/* notice */
 .ntc-card{background:white;border-radius:14px;border:1.5px solid #f0d8ea;padding:0.95rem 1rem;margin-bottom:0.7rem;}
 .ntc-tag{display:inline-block;background:linear-gradient(135deg,#f8c8e0,#d4b8f0);color:#9040b0;font-size:0.62rem;font-weight:700;border-radius:99px;padding:0.12rem 0.55rem;margin-bottom:0.4rem;}
 .ntc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;}
 .ntc-title{font-size:0.84rem;font-weight:700;color:#b060c0;}
 .ntc-date{font-size:0.66rem;color:#c0a0c0;}
 .ntc-body{font-size:0.78rem;color:#7a5a7a;line-height:1.7;}
-/* search */
 .srch-bar{display:flex;align-items:center;background:white;border-radius:12px;border:1.5px solid #e0c8f0;padding:0.65rem 1rem;margin-bottom:1rem;gap:0.5rem;}
 .srch-bar input{flex:1;border:none;outline:none;font-size:0.88rem;font-family:inherit;color:#7a5a7a;background:transparent;}
 .srch-bar input::placeholder{color:#d0b0d0;}
 .srch-tags{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:1rem;}
 .stag{background:white;border:1.5px solid #e8d0f0;border-radius:99px;padding:0.32rem 0.85rem;font-size:0.73rem;font-weight:700;color:#b060c0;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;}
-/* staff overlay */
 .overlay{display:none;position:fixed;inset:0;background:rgba(200,160,220,0.2);backdrop-filter:blur(3px);z-index:200;align-items:flex-end;}
 .overlay.active{display:flex;}
 .sheet{background:linear-gradient(160deg,#fff0f5,#f5f0ff);border-radius:24px 24px 0 0;padding:1.2rem 1.1rem;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
@@ -126,11 +116,17 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .closebtn{background:none;border:none;font-size:1.3rem;cursor:pointer;padding:0;line-height:1;}
 .subsec{font-size:0.8rem;font-weight:700;color:#c060a0;margin:0.9rem 0 0.5rem;}
 .sqli{background:white;border-radius:11px;border:1.5px solid #f0d8ea;padding:0.72rem 0.9rem;margin-bottom:0.48rem;}
+.sqli-row{display:flex;justify-content:space-between;align-items:center;}
+.sqli-detail{margin-top:0.55rem;padding-top:0.5rem;border-top:1px dashed #f0d8ea;display:flex;flex-direction:column;gap:0.42rem;}
+.sqli-row2{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
+.sqli-lbl{font-size:0.62rem;color:#b060c0;font-weight:700;white-space:nowrap;}
+.sqli-inp{border:1.5px solid #e0c8f0;border-radius:7px;padding:0.28rem 0.5rem;font-size:0.74rem;font-family:inherit;color:#7a5a7a;outline:none;width:64px;background:white;}
 .newtag{display:inline-block;background:linear-gradient(135deg,#f0a0cc,#c090e0);color:white;font-size:0.58rem;font-weight:700;border-radius:99px;padding:0.1rem 0.42rem;margin-left:0.3rem;vertical-align:middle;}
-/* 光らせるボタン */
 .litbtn{background:none;border:1.5px solid #ffaaaa;border-radius:7px;padding:0.22rem 0.52rem;font-size:0.64rem;color:#e04040;cursor:pointer;font-family:inherit;}
 .litbtn.on{background:#ff4444;border-color:#ff4444;color:white;}
-/* 購入フォームオーバーレイ */
+.salebtn{background:none;border:1.5px solid #ffb0b0;border-radius:7px;padding:0.22rem 0.52rem;font-size:0.62rem;color:#e04060;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.salebtn.on{background:#ff4060;border-color:#ff4060;color:white;}
+.savebtn{background:linear-gradient(135deg,#f0a0cc,#c090e0);color:white;border:none;border-radius:7px;padding:0.24rem 0.6rem;font-size:0.62rem;font-weight:700;font-family:inherit;cursor:pointer;}
 .buy-overlay{display:none;position:fixed;inset:0;background:rgba(100,60,120,0.35);backdrop-filter:blur(4px);z-index:300;align-items:flex-end;}
 .buy-overlay.active{display:flex;}
 .buy-sheet{background:linear-gradient(160deg,#fff0f5,#f5f0ff);border-radius:24px 24px 0 0;padding:1.4rem 1.2rem 2rem;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
@@ -141,7 +137,6 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .buy-done-emoji{font-size:3rem;}
 .buy-done-msg{font-size:0.9rem;font-weight:700;color:#c040a0;margin-top:0.5rem;}
 .buy-done-sub{font-size:0.74rem;color:#c0a0c0;margin-top:0.25rem;}
-/* ライブスケジュール */
 .live-card{background:white;border-radius:14px;border:1.5px solid #f0d8ea;padding:0.95rem 1rem;margin-bottom:0.7rem;position:relative;overflow:hidden;}
 .live-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#ff6060,#ff2020);}
 .live-date-badge{display:inline-flex;align-items:center;gap:0.4rem;background:linear-gradient(135deg,#ff6060,#ff2020);color:white;border-radius:10px;padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:700;margin-bottom:0.55rem;}
@@ -151,12 +146,10 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .live-empty{text-align:center;padding:2.5rem 1rem;}
 .live-empty-icon{font-size:3rem;margin-bottom:0.5rem;}
 .live-empty-msg{font-size:0.8rem;color:#c0a0c0;}
-/* 購入者一覧 */
 .order-card{background:white;border-radius:11px;border:1.5px solid #f0d8ea;padding:0.8rem 0.9rem;margin-bottom:0.5rem;}
 .order-name{font-size:0.84rem;font-weight:700;color:#c040a0;}
 .order-prod{font-size:0.7rem;color:#b080b0;margin-bottom:0.3rem;}
 .order-info{font-size:0.72rem;color:#7a5a7a;line-height:1.7;}
-/* お気に入り */
 .fav-btn{position:absolute;top:0.35rem;left:0.4rem;background:none;border:none;font-size:1.05rem;cursor:pointer;line-height:1;padding:0;z-index:2;-webkit-tap-highlight-color:transparent;}
 .fav-float{position:fixed;bottom:5.8rem;right:1rem;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#ff80b0,#ff3080);color:white;font-size:1.5rem;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(255,40,120,0.45);cursor:pointer;z-index:150;border:none;-webkit-tap-highlight-color:transparent;}
 .fav-count{position:absolute;top:-3px;right:-3px;background:#ff2020;color:white;font-size:0.58rem;font-weight:700;border-radius:99px;padding:0.08rem 0.3rem;min-width:16px;text-align:center;display:none;}
@@ -164,33 +157,17 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
 .fav-overlay.active{display:flex;}
 .fav-sheet{background:linear-gradient(160deg,#fff0f5,#f5f0ff);border-radius:24px 24px 0 0;padding:1.2rem 1.1rem 2rem;width:100%;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .fav-sheet::-webkit-scrollbar{display:none;}
-/* セール */
 .sale-badge{position:absolute;bottom:2.8rem;left:0.4rem;background:linear-gradient(135deg,#ff4060,#ff0040);color:white;font-size:0.58rem;font-weight:700;border-radius:99px;padding:0.12rem 0.45rem;z-index:2;}
 .sq-stock{display:inline-block;background:#e8f8e8;border-radius:99px;font-size:0.6rem;color:#408040;font-weight:700;padding:0.12rem 0.5rem;margin-bottom:0.45rem;}
-/* スタッフ商品詳細行 */
-.sqli{background:white;border-radius:11px;border:1.5px solid #f0d8ea;padding:0.72rem 0.9rem;margin-bottom:0.48rem;}
-.sqli-row{display:flex;justify-content:space-between;align-items:center;}
-.sqli-detail{margin-top:0.55rem;padding-top:0.5rem;border-top:1px dashed #f0d8ea;display:flex;flex-direction:column;gap:0.42rem;}
-.sqli-row2{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
-.sqli-lbl{font-size:0.62rem;color:#b060c0;font-weight:700;white-space:nowrap;}
-.sqli-inp{border:1.5px solid #e0c8f0;border-radius:7px;padding:0.28rem 0.5rem;font-size:0.74rem;font-family:inherit;color:#7a5a7a;outline:none;width:64px;background:white;}
-.salebtn{background:none;border:1.5px solid #ffb0b0;border-radius:7px;padding:0.22rem 0.52rem;font-size:0.62rem;color:#e04060;cursor:pointer;font-family:inherit;white-space:nowrap;}
-.salebtn.on{background:#ff4060;border-color:#ff4060;color:white;}
-.savebtn{background:linear-gradient(135deg,#f0a0cc,#c090e0);color:white;border:none;border-radius:7px;padding:0.24rem 0.6rem;font-size:0.62rem;font-weight:700;font-family:inherit;cursor:pointer;}
 </style>
 </head>
 <body>
 <div class="app">
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-brand">OHinasama</div>
     <span style="font-size:1.4rem;cursor:pointer;" onclick="openStaff()">🔒</span>
   </div>
-
-  <!-- SCROLL -->
   <div class="scroll-area">
-
-    <!-- HOME -->
     <div id="p-home" class="page active">
       <div class="hero">
         <div class="deco" style="width:90px;height:90px;background:#f0a0cc;top:-25px;right:-20px;"></div>
@@ -227,69 +204,50 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
         <div style="font-size:0.62rem;color:#c0a0c0;margin-top:0.2rem;">© OHinasama All rights reserved.</div>
       </div>
     </div>
-
-    <!-- SQUEEZE -->
     <div id="p-squeeze" class="page">
       <div class="sec-title" style="margin-top:0.3rem;">🧸 スクイーズ一覧</div>
-      <div class="sq-banner">
-        <span style="font-size:1.5rem;">🔥</span>
-        <div class="sq-banner-text">大人気のため現在ほぼ完売中！<br><span style="font-weight:400;font-size:0.7rem;color:#b060c0;">ライブ配信でのみ購入できます</span></div>
-      </div>
+      <div class="sq-banner"><span style="font-size:1.5rem;">🔥</span><div class="sq-banner-text">大人気のため現在ほぼ完売中！<br><span style="font-weight:400;font-size:0.7rem;color:#b060c0;">ライブ配信でのみ購入できます</span></div></div>
       <div class="sq-grid" id="sq-grid"></div>
     </div>
-
-    <!-- NOTICE -->
     <div id="p-notice" class="page">
       <div class="sec-title" style="margin-top:0.3rem;">🔔 お知らせ</div>
       <div id="notice-list"></div>
     </div>
-
-    <!-- SEARCH -->
     <div id="p-search" class="page">
       <div class="sec-title" style="margin-top:0.3rem;">🔍 検索</div>
-      <div class="srch-bar">
-        <span>🔍</span>
-        <input type="text" id="srch-inp" placeholder="スクイーズを検索…" oninput="doSearch()">
-      </div>
+      <div class="srch-bar"><span>🔍</span><input type="text" id="srch-inp" placeholder="スクイーズを検索…" oninput="doSearch()"></div>
       <div class="sec-title" style="font-size:0.8rem;">タグから探す</div>
       <div class="srch-tags" id="srch-tags"></div>
-      <div id="srch-result" style="display:none;">
-        <div class="sec-title" style="font-size:0.8rem;">検索結果</div>
-        <div class="sq-grid" id="srch-grid"></div>
-      </div>
+      <div id="srch-result" style="display:none;"><div class="sec-title" style="font-size:0.8rem;">検索結果</div><div class="sq-grid" id="srch-grid"></div></div>
       <div id="no-result" style="display:none;text-align:center;font-size:0.8rem;color:#c0a0c0;padding:2rem 0;">😢 見つかりませんでした</div>
     </div>
-
-    <!-- LIVE SCHEDULE -->
     <div id="p-live" class="page">
       <div class="sec-title" style="margin-top:0.3rem;">📅 ライブ配信スケジュール</div>
       <div id="live-list"></div>
     </div>
-
-  </div><!-- /scroll -->
-
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <div class="bnav-item active" id="bn-home" onclick="showPage('home')">
-      <span class="bnav-icon">🏠</span><span class="bnav-label">ホーム</span><div class="bnav-dot"></div>
-    </div>
-    <div class="bnav-item" id="bn-squeeze" onclick="showPage('squeeze')">
-      <span class="bnav-icon">🧸</span><span class="bnav-label">スクイーズ</span><div class="bnav-dot"></div>
-    </div>
-    <div class="bnav-item" id="bn-notice" onclick="showPage('notice')">
-      <span class="bnav-icon">🔔</span><span class="bnav-label">お知らせ</span><div class="bnav-dot"></div>
-    </div>
-    <div class="bnav-item" id="bn-search" onclick="showPage('search')">
-      <span class="bnav-icon">🔍</span><span class="bnav-label">検索</span><div class="bnav-dot"></div>
-    </div>
-    <div class="bnav-item" id="bn-live" onclick="showPage('live')">
-      <span class="bnav-icon">📅</span><span class="bnav-label">配信日程</span><div class="bnav-dot"></div>
-    </div>
   </div>
+  <div class="bottom-nav">
+    <div class="bnav-item active" id="bn-home" onclick="showPage('home')"><span class="bnav-icon">🏠</span><span class="bnav-label">ホーム</span><div class="bnav-dot"></div></div>
+    <div class="bnav-item" id="bn-squeeze" onclick="showPage('squeeze')"><span class="bnav-icon">🧸</span><span class="bnav-label">スクイーズ</span><div class="bnav-dot"></div></div>
+    <div class="bnav-item" id="bn-notice" onclick="showPage('notice')"><span class="bnav-icon">🔔</span><span class="bnav-label">お知らせ</span><div class="bnav-dot"></div></div>
+    <div class="bnav-item" id="bn-search" onclick="showPage('search')"><span class="bnav-icon">🔍</span><span class="bnav-label">検索</span><div class="bnav-dot"></div></div>
+    <div class="bnav-item" id="bn-live" onclick="showPage('live')"><span class="bnav-icon">📅</span><span class="bnav-label">配信日程</span><div class="bnav-dot"></div></div>
+  </div>
+</div>
 
-</div><!-- /app -->
+<button class="fav-float" onclick="openFavs()">❤️<span class="fav-count" id="fav-count">0</span></button>
 
-<!-- STAFF OVERLAY -->
+<div class="fav-overlay" id="fav-overlay" onclick="favOutsideClose(event)">
+  <div class="fav-sheet">
+    <div class="handle"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+      <div style="font-size:0.95rem;font-weight:700;color:#c040a0;">❤️ お気に入り</div>
+      <button class="closebtn" onclick="closeFavs()">✕</button>
+    </div>
+    <div id="fav-list"></div>
+  </div>
+</div>
+
 <div class="overlay" id="overlay" onclick="outsideClose(event)">
   <div class="sheet" id="sheet">
     <div class="handle"></div>
@@ -297,7 +255,6 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
       <div style="font-size:0.92rem;font-weight:700;color:#b060c0;">🔒 スタッフ専用</div>
       <button class="closebtn" onclick="closeStaff()">✕</button>
     </div>
-    <!-- PW -->
     <div id="pw-area" class="pw-area">
       <div style="font-size:2rem;margin-bottom:0.5rem;">🔒</div>
       <div class="pw-ttl">スタッフ専用ページ</div>
@@ -306,7 +263,6 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
       <button class="pw-go" onclick="checkPw()">ログイン</button>
       <div class="pw-err" id="pw-err">パスワードが違います🙅</div>
     </div>
-    <!-- DASH -->
     <div class="sdash" id="sdash">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
         <div style="font-size:0.88rem;font-weight:700;color:#b060c0;">🎀 スタッフページ</div>
@@ -321,102 +277,68 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
         <button class="stab" onclick="showTab('noticemgr',this)">📢 お知らせ</button>
         <button class="stab" onclick="showTab('livemgr',this)">📅 配信日程</button>
       </div>
-      <!-- CLAIM TAB -->
       <div class="stab-pane active" id="tab-claim">
-        <label class="flabel">お客様名</label>
-        <input class="finput" id="c-name" placeholder="例：○○さん">
-        <label class="flabel">商品名</label>
-        <select class="fsel" id="c-prod"></select>
-        <label class="flabel">クレーム内容</label>
-        <textarea class="ftarea" id="c-body" placeholder="クレームの内容を詳しく…"></textarea>
-        <label class="flabel">その他・補足</label>
-        <textarea class="ftarea" id="c-other" placeholder="返金対応、連絡済みなど…" style="min-height:52px;"></textarea>
+        <label class="flabel">お客様名</label><input class="finput" id="c-name" placeholder="例：○○さん">
+        <label class="flabel">商品名</label><select class="fsel" id="c-prod"></select>
+        <label class="flabel">クレーム内容</label><textarea class="ftarea" id="c-body" placeholder="クレームの内容を詳しく…"></textarea>
+        <label class="flabel">その他・補足</label><textarea class="ftarea" id="c-other" placeholder="返金対応、連絡済みなど…" style="min-height:52px;"></textarea>
         <label class="flabel">ステータス</label>
         <select class="fsel" id="c-stat"><option value="open">対応中</option><option value="done">解決済み</option></select>
         <button class="sbtn" onclick="saveClaim()">💾 保存する</button>
-        <div class="subsec">クレーム一覧</div>
-        <div id="claim-list"><div class="empty">まだ記録がありません🌸</div></div>
+        <div class="subsec">クレーム一覧</div><div id="claim-list"><div class="empty">まだ記録がありません🌸</div></div>
       </div>
-      <!-- MEMO TAB -->
       <div class="stab-pane" id="tab-memo">
-        <label class="flabel">タイトル</label>
-        <input class="finput" id="m-ttl" placeholder="例：仕入れ予定">
-        <label class="flabel">メモ内容</label>
-        <textarea class="ftarea" id="m-body" placeholder="自由にメモしてね…"></textarea>
+        <label class="flabel">タイトル</label><input class="finput" id="m-ttl" placeholder="例：仕入れ予定">
+        <label class="flabel">メモ内容</label><textarea class="ftarea" id="m-body" placeholder="自由にメモしてね…"></textarea>
         <button class="sbtn" onclick="saveMemo()">💾 保存する</button>
-        <div class="subsec">メモ一覧</div>
-        <div id="memo-list"><div class="empty">まだメモがありません🌸</div></div>
+        <div class="subsec">メモ一覧</div><div id="memo-list"><div class="empty">まだメモがありません🌸</div></div>
       </div>
-      <!-- SALES TAB -->
       <div class="stab-pane" id="tab-sales">
         <div class="stotal"><div class="stotal-lbl">今月の売上合計</div><div class="stotal-num" id="s-total">¥0</div></div>
-        <label class="flabel">商品名</label>
-        <select class="fsel" id="s-prod"></select>
-        <label class="flabel">金額（円）</label>
-        <input class="finput" id="s-price" type="number" placeholder="例：550">
+        <label class="flabel">商品名</label><select class="fsel" id="s-prod"></select>
+        <label class="flabel">金額（円）</label><input class="finput" id="s-price" type="number" placeholder="例：550">
         <button class="sbtn" onclick="saveSale()">💾 追加する</button>
-        <div class="subsec">売上一覧</div>
-        <div id="sales-list"><div class="empty">まだ記録がありません🌸</div></div>
+        <div class="subsec">売上一覧</div><div id="sales-list"><div class="empty">まだ記録がありません🌸</div></div>
       </div>
-      <!-- SQ MANAGER TAB -->
       <div class="stab-pane" id="tab-sqmgr">
         <div class="subsec" style="margin-top:0;">新しい商品を追加</div>
-        <label class="flabel">絵文字（アイコン）</label>
-        <input class="finput" id="sq-emoji" placeholder="例：🍰" maxlength="4">
-        <label class="flabel">商品名</label>
-        <input class="finput" id="sq-name" placeholder="例：ケーキスクイーズ">
-        <label class="flabel">値段（円）</label>
-        <input class="finput" id="sq-price" type="number" placeholder="例：580">
+        <label class="flabel">絵文字</label><input class="finput" id="sq-emoji" placeholder="例：🍰" maxlength="4">
+        <label class="flabel">商品名</label><input class="finput" id="sq-name" placeholder="例：ケーキスクイーズ">
+        <label class="flabel">値段（円）</label><input class="finput" id="sq-price" type="number" placeholder="例：580">
         <button class="sbtn" onclick="addSq()">✨ 追加する</button>
-        <div class="subsec">商品一覧</div>
-        <div id="sq-list"></div>
+        <div class="subsec">商品一覧</div><div id="sq-list"></div>
       </div>
-      <!-- NOTICE MANAGER TAB -->
       <div class="stab-pane" id="tab-noticemgr">
         <div class="subsec" style="margin-top:0;">新しいお知らせを書く 📝</div>
         <label class="flabel">タグ（種類）</label>
         <select class="fsel" id="ntc-tag">
-          <option value="">なし</option>
-          <option value="🆕 新着">🆕 新着</option>
-          <option value="📦 入荷">📦 入荷</option>
-          <option value="🎉 イベント">🎉 イベント</option>
-          <option value="⚠️ 重要">⚠️ 重要</option>
-          <option value="💕 お礼">💕 お礼</option>
+          <option value="">なし</option><option value="🆕 新着">🆕 新着</option>
+          <option value="📦 入荷">📦 入荷</option><option value="🎉 イベント">🎉 イベント</option>
+          <option value="⚠️ 重要">⚠️ 重要</option><option value="💕 お礼">💕 お礼</option>
           <option value="🙇 お詫び">🙇 お詫び</option>
         </select>
-        <label class="flabel">タイトル</label>
-        <input class="finput" id="ntc-title" placeholder="例：ライブ配信のお知らせ">
-        <label class="flabel">内容</label>
-        <textarea class="ftarea" id="ntc-body" placeholder="お知らせの内容を書いてね…"></textarea>
+        <label class="flabel">タイトル</label><input class="finput" id="ntc-title" placeholder="例：ライブ配信のお知らせ">
+        <label class="flabel">内容</label><textarea class="ftarea" id="ntc-body" placeholder="お知らせの内容を書いてね…"></textarea>
         <button class="sbtn" onclick="postNotice()">📢 投稿する</button>
-        <div class="subsec">投稿済みのお知らせ</div>
-        <div id="staff-notice-list"></div>
+        <div class="subsec">投稿済みのお知らせ</div><div id="staff-notice-list"></div>
       </div>
-      <!-- LIVE MANAGER TAB -->
       <div class="stab-pane" id="tab-livemgr">
         <div class="subsec" style="margin-top:0;">配信日程を追加 📅</div>
-        <label class="flabel">配信日</label>
-        <input class="finput" id="lv-date" type="date">
-        <label class="flabel">開始時間</label>
-        <input class="finput" id="lv-time" type="time">
-        <label class="flabel">タイトル</label>
-        <input class="finput" id="lv-title" placeholder="例：スクイーズ新作ライブ🧸">
-        <label class="flabel">メモ（任意）</label>
-        <input class="finput" id="lv-note" placeholder="例：新商品を一挙公開！お楽しみに✨">
+        <label class="flabel">配信日</label><input class="finput" id="lv-date" type="date">
+        <label class="flabel">開始時間</label><input class="finput" id="lv-time" type="time">
+        <label class="flabel">タイトル</label><input class="finput" id="lv-title" placeholder="例：スクイーズ新作ライブ🧸">
+        <label class="flabel">メモ（任意）</label><input class="finput" id="lv-note" placeholder="例：新商品を一挙公開！">
         <button class="sbtn" onclick="addLive()">✨ 追加する</button>
-        <div class="subsec">追加済みの日程</div>
-        <div id="staff-live-list"></div>
+        <div class="subsec">追加済みの日程</div><div id="staff-live-list"></div>
       </div>
-      <!-- ORDERS TAB -->
       <div class="stab-pane" id="tab-orders">
         <div class="subsec" style="margin-top:0;">購入してくれた人 🎉</div>
         <div id="orders-list"><div class="empty">まだ購入者がいません🌸</div></div>
       </div>
-    </div><!-- /sdash -->
-  </div><!-- /sheet -->
-</div><!-- /overlay -->
+    </div>
+  </div>
+</div>
 
-<!-- 購入フォームオーバーレイ -->
 <div class="buy-overlay" id="buy-overlay" onclick="buyOutsideClose(event)">
   <div class="buy-sheet">
     <div class="handle"></div>
@@ -426,19 +348,13 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
     </div>
     <div class="buy-prod-name" id="buy-prod-label"></div>
     <div id="buy-form">
-      <label class="flabel">お名前 ✍️</label>
-      <input class="finput" id="b-name" placeholder="例：○○ ○○">
-      <label class="flabel">住所 🏠</label>
-      <input class="finput" id="b-addr" placeholder="例：東京都○○区…">
-      <label class="flabel">電話番号 📞</label>
-      <input class="finput" id="b-tel" type="tel" placeholder="例：090-0000-0000">
+      <label class="flabel">お名前 ✍️</label><input class="finput" id="b-name" placeholder="例：○○ ○○">
+      <label class="flabel">住所 🏠</label><input class="finput" id="b-addr" placeholder="例：東京都○○区…">
+      <label class="flabel">電話番号 📞</label><input class="finput" id="b-tel" type="tel" placeholder="例：090-0000-0000">
       <label class="flabel">お支払い方法 💳</label>
       <select class="fsel" id="b-pay">
-        <option value="現金">現金</option>
-        <option value="クレジットカード">クレジットカード</option>
-        <option value="PayPay">PayPay</option>
-        <option value="LINE Pay">LINE Pay</option>
-        <option value="その他">その他</option>
+        <option value="現金">現金</option><option value="クレジットカード">クレジットカード</option>
+        <option value="PayPay">PayPay</option><option value="LINE Pay">LINE Pay</option><option value="その他">その他</option>
       </select>
       <button class="sbtn" style="background:linear-gradient(135deg,#ff6060,#ff2020);" onclick="submitBuy()">🛒 購入する</button>
     </div>
@@ -451,299 +367,180 @@ html,body{height:100%;background:#e8d0f0;font-family:'Zen Maru Gothic',sans-seri
   </div>
 </div>
 
-<!-- お気に入りフロートボタン（app外） -->
-<button class="fav-float" onclick="openFavs()">
-  ❤️<span class="fav-count" id="fav-count">0</span>
-</button>
-
-<!-- お気に入りシート（app外） -->
-<div class="fav-overlay" id="fav-overlay" onclick="favOutsideClose(event)">
-  <div class="fav-sheet">
-    <div class="handle"></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-      <div style="font-size:0.95rem;font-weight:700;color:#c040a0;">❤️ お気に入り</div>
-      <button class="closebtn" onclick="closeFavs()">✕</button>
-    </div>
-    <div id="fav-list"></div>
-  </div>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SURL='https://detrbkhpncnwqdphadcn.supabase.co';
+const SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRldHJia2hwbmNud3FkcGhhZGNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTExODcsImV4cCI6MjA5NjIyNzE4N30.kpojQDLvESLhtmyGXXtxqIsoLUdGdZG88ryiQ1VBGB8';
+const db=supabase.createClient(SURL,SKEY);
 const PW='ohina0000';
-let claims=[],memos=[],sales=[],orders=[];
-let notices=[
-  {tag:'🆕 新着',title:'ライブ配信のお知らせ',body:'近日中にライブ配信を予定しています！新しいスクイーズが続々入荷予定🧸お楽しみに✨',date:'2026/06/04',id:10001},
-  {tag:'📦 入荷',title:'新商品入荷しました',body:'かわいいスクイーズが新しく入荷しました🌸ライブ配信でチェックしてね！',date:'2026/05/28',id:10002},
-  {tag:'',title:'OHinasamaオープンしました！',body:'OHinasamaをオープンしました🎉これからよろしくお願いします💕',date:'2026/05/01',id:10003},
-];
-let litIds=new Set();
+let claims=[],memos=[],sales=[];
+let squeezes=[],notices=[],lives=[],orders=[];
 let favorites=new Set();
 let buyingId=null;
-const OLD=Date.now()-4*24*60*60*1000;
-let squeezes=[
-  {e:'🐾',n:'猫の肉球',p:550,at:OLD,id:1,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🍞',n:'森のパン屋さん',p:560,at:OLD,id:2,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🍱',n:'お弁当スクイーズ',p:560,at:OLD,id:3,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🍙',n:'めちゃめちゃおにぎり',p:620,at:OLD,id:4,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🍭',n:'キャンディーカラー',p:560,at:OLD,id:5,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🦭',n:'シールスクイーズ',p:600,at:OLD,id:6,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'⭐',n:'まほうの星マカロン',p:580,at:OLD,id:7,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🍮',n:'ハピネスプリン',p:620,at:OLD,id:8,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'💎',n:'海の宝石',p:620,at:OLD,id:9,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-  {e:'🍡',n:'ふわふわおまんじゅう',p:660,at:OLD,id:10,onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0},
-];
 
-function isNew(s){return Date.now()-s.at<3*24*60*60*1000;}
+async function fetchSqueezes(){const{data}=await db.from('squeezes').select('*').order('id');squeezes=data||[];renderSq();}
+async function fetchNotices(){const{data}=await db.from('notices').select('*').order('id',{ascending:false});notices=data||[];renderNotices();}
+async function fetchLives(){const{data}=await db.from('lives').select('*').order('date');lives=data||[];renderLives();}
+async function fetchOrders(){const{data}=await db.from('orders').select('*').order('id',{ascending:false});orders=data||[];renderOrders();}
+function setupRealtime(){
+  db.channel('all')
+    .on('postgres_changes',{event:'*',schema:'public',table:'squeezes'},fetchSqueezes)
+    .on('postgres_changes',{event:'*',schema:'public',table:'notices'},fetchNotices)
+    .on('postgres_changes',{event:'*',schema:'public',table:'lives'},fetchLives)
+    .on('postgres_changes',{event:'*',schema:'public',table:'orders'},fetchOrders)
+    .subscribe();
+}
 
 function sqCard(s){
-  const nb=isNew(s)?'<div class="new-badge">🆕 NEW</div>':'';
+  const nb=s.is_new?'<div class="new-badge">🆕 NEW</div>':'';
   const isFav=favorites.has(s.id);
-  const isLit=litIds.has(s.id);
-  const isSoldOut=s.realLimit>0&&s.soldCount>=s.realLimit;
-  const canBuy=isLit&&!isSoldOut;
+  const isSoldOut=s.real_limit>0&&s.sold_count>=s.real_limit;
+  const canBuy=s.is_lit&&!isSoldOut;
   const cardClass='sq-card'+(canBuy?' lit':'');
   const btnClass='buy-btn'+(canBuy?' lit':'');
   const btnClick=canBuy?`onclick="openBuy(${s.id})"`:' ';
-  // 価格表示
-  const priceHtml=s.onSale&&s.salePrice>0
-    ?`<div class="sq-price"><span style="text-decoration:line-through;color:#d0b0d0;font-size:0.64rem;">¥${s.p.toLocaleString()}</span> <span style="color:#e04060;font-weight:700;">¥${s.salePrice.toLocaleString()}</span></div>`
-    :`<div class="sq-price">¥${s.p.toLocaleString()}</div>`;
-  const saleBadge=s.onSale&&s.salePrice>0?'<div class="sale-badge">SALE</div>':'';
-  // 在庫表示
+  const priceHtml=s.on_sale&&s.sale_price>0
+    ?`<div class="sq-price"><span style="text-decoration:line-through;color:#d0b0d0;font-size:0.64rem;">¥${s.price.toLocaleString()}</span> <span style="color:#e04060;font-weight:700;">¥${s.sale_price.toLocaleString()}</span></div>`
+    :`<div class="sq-price">¥${s.price.toLocaleString()}</div>`;
+  const saleBadge=s.on_sale&&s.sale_price>0?'<div class="sale-badge">SALE</div>':'';
   let stockHtml='';
-  if(isSoldOut) stockHtml='<div class="sq-sold">🔥 完売しました</div>';
-  else if(s.dispStock>0) stockHtml=`<div class="sq-stock">📦 残り${s.dispStock}個</div>`;
-  else if(!canBuy) stockHtml='<div class="sq-sold">🔥 人気につき完売中</div>';
+  if(isSoldOut)stockHtml='<div class="sq-sold">🔥 完売しました</div>';
+  else if(s.disp_stock>0)stockHtml=`<div class="sq-stock">📦 残り${s.disp_stock}個</div>`;
+  else if(!canBuy)stockHtml='<div class="sq-sold">🔥 人気につき完売中</div>';
   const favBtn=`<button class="fav-btn" onclick="toggleFav(${s.id})">${isFav?'❤️':'🤍'}</button>`;
-  return`<div class="${cardClass}">${nb}${saleBadge}${favBtn}<span class="sq-emoji">${s.e}</span><div class="sq-name">${s.n}</div>${priceHtml}${stockHtml}<button class="${btnClass}" ${btnClick}><span class="buy-btn-inner">${canBuy?'✨ 購入する':'購入する'}</span></button></div>`;
+  return`<div class="${cardClass}">${nb}${saleBadge}${favBtn}<span class="sq-emoji">${s.emoji}</span><div class="sq-name">${s.name}</div>${priceHtml}${stockHtml}<button class="${btnClass}" ${btnClick}><span class="buy-btn-inner">${canBuy?'✨ 購入する':'購入する'}</span></button></div>`;
 }
-
 function renderSq(){
   document.getElementById('sq-grid').innerHTML=squeezes.map(sqCard).join('');
-  document.getElementById('srch-tags').innerHTML=squeezes.map(s=>`<button class="stag" onclick="searchTag('${s.n}')">${s.e} ${s.n}</button>`).join('');
-  const opts=squeezes.map(s=>`<option value="${s.n}">${s.e} ${s.n}（¥${s.p}）</option>`).join('');
+  document.getElementById('srch-tags').innerHTML=squeezes.map(s=>`<button class="stag" onclick="searchTag('${s.name}')">${s.emoji} ${s.name}</button>`).join('');
+  const opts=squeezes.map(s=>`<option value="${s.name}">${s.emoji} ${s.name}（¥${s.price}）</option>`).join('');
   document.getElementById('c-prod').innerHTML=opts;
   document.getElementById('s-prod').innerHTML=opts;
-  renderSqList();
-  updateFavCount();
+  renderSqList();updateFavCount();
 }
-
 function renderSqList(){
   const el=document.getElementById('sq-list');
   if(!squeezes.length){el.innerHTML='<div class="empty">商品がありません</div>';return;}
   el.innerHTML=squeezes.map(s=>{
-    const isLit=litIds.has(s.id);
-    const isSoldOut=s.realLimit>0&&s.soldCount>=s.realLimit;
-    return`<div class="sqli">
-      <div class="sqli-row">
-        <div style="font-size:0.78rem;color:#7a5a7a;">${s.e} ${s.n}${isNew(s)?'<span class="newtag">NEW</span>':''}${isSoldOut?'<span style="font-size:0.6rem;color:#e04060;margin-left:0.3rem;">完売</span>':''}</div>
-        <div style="display:flex;align-items:center;gap:0.35rem;">
-          <span style="font-size:0.72rem;font-weight:700;color:#b060c0;">¥${s.p}</span>
-          <button class="litbtn${isLit?' on':''}" onclick="toggleLit(${s.id})">${isLit?'🔴 消す':'⚫ 光らせる'}</button>
-          <button class="delbtn" onclick="delSq(${s.id})">削除</button>
-        </div>
-      </div>
+    const isSoldOut=s.real_limit>0&&s.sold_count>=s.real_limit;
+    return`<div class="sqli"><div class="sqli-row">
+      <div style="font-size:0.78rem;color:#7a5a7a;">${s.emoji} ${s.name}${s.is_new?'<span class="newtag">NEW</span>':''}${isSoldOut?'<span style="font-size:0.6rem;color:#e04060;margin-left:0.3rem;">完売</span>':''}</div>
+      <div style="display:flex;align-items:center;gap:0.35rem;">
+        <span style="font-size:0.72rem;font-weight:700;color:#b060c0;">¥${s.price}</span>
+        <button class="litbtn${s.is_lit?' on':''}" onclick="toggleLit(${s.id})">${s.is_lit?'🔴 消す':'⚫ 光らせる'}</button>
+        <button class="delbtn" onclick="delSq(${s.id})">削除</button>
+      </div></div>
       <div class="sqli-detail">
-        <div class="sqli-row2">
-          <span class="sqli-lbl">💰 セール</span>
-          <button class="salebtn${s.onSale?' on':''}" onclick="toggleSale(${s.id})">${s.onSale?'ON（タップでOFF）':'OFF（タップでON）'}</button>
+        <div class="sqli-row2"><span class="sqli-lbl">💰 セール</span>
+          <button class="salebtn${s.on_sale?' on':''}" onclick="toggleSale(${s.id})">${s.on_sale?'ON':'OFF'}</button>
           <span class="sqli-lbl">セール価格</span>
-          <input class="sqli-inp" id="sp-${s.id}" type="number" value="${s.salePrice||''}" placeholder="例：480">
+          <input class="sqli-inp" id="sp-${s.id}" type="number" value="${s.sale_price||''}" placeholder="480">
         </div>
-        <div class="sqli-row2">
-          <span class="sqli-lbl">📦 表示在庫</span>
-          <input class="sqli-inp" id="ds-${s.id}" type="number" value="${s.dispStock||''}" placeholder="例：50">
-          <span class="sqli-lbl">実際の上限</span>
-          <input class="sqli-inp" id="rl-${s.id}" type="number" value="${s.realLimit||''}" placeholder="例：2">
+        <div class="sqli-row2"><span class="sqli-lbl">📦 表示在庫</span>
+          <input class="sqli-inp" id="ds-${s.id}" type="number" value="${s.disp_stock||''}" placeholder="50">
+          <span class="sqli-lbl">上限</span>
+          <input class="sqli-inp" id="rl-${s.id}" type="number" value="${s.real_limit||''}" placeholder="2">
           <button class="savebtn" onclick="saveSqSettings(${s.id})">保存</button>
         </div>
-        <div style="font-size:0.62rem;color:#c0a0c0;">※上限0＝制限なし　購入数：${s.soldCount}件</div>
-      </div>
-    </div>`;
+        <div style="font-size:0.62rem;color:#c0a0c0;">購入数：${s.sold_count}件　上限0＝制限なし</div>
+      </div></div>`;
   }).join('');
 }
-
-function toggleLit(id){
-  if(litIds.has(id)) litIds.delete(id);
-  else litIds.add(id);
-  renderSq();
+async function toggleLit(id){const s=squeezes.find(x=>x.id===id);if(!s)return;await db.from('squeezes').update({is_lit:!s.is_lit}).eq('id',id);}
+async function toggleSale(id){const s=squeezes.find(x=>x.id===id);if(!s)return;await db.from('squeezes').update({on_sale:!s.on_sale}).eq('id',id);}
+async function saveSqSettings(id){
+  const sp=parseInt(document.getElementById('sp-'+id).value)||0;
+  const ds=parseInt(document.getElementById('ds-'+id).value)||0;
+  const rl=parseInt(document.getElementById('rl-'+id).value)||0;
+  await db.from('squeezes').update({sale_price:sp,disp_stock:ds,real_limit:rl}).eq('id',id);
 }
-
-function addSq(){
+async function addSq(){
   const e=document.getElementById('sq-emoji').value.trim()||'🧸';
   const n=document.getElementById('sq-name').value.trim();
   const p=parseInt(document.getElementById('sq-price').value);
   if(!n||!p||p<=0)return;
-  squeezes.push({e,n,p,at:Date.now(),id:Date.now(),onSale:false,salePrice:0,dispStock:0,realLimit:0,soldCount:0});
-  document.getElementById('sq-emoji').value='';
-  document.getElementById('sq-name').value='';
-  document.getElementById('sq-price').value='';
-  renderSq();
+  await db.from('squeezes').insert({id:Date.now(),emoji:e,name:n,price:p,is_new:true});
+  document.getElementById('sq-emoji').value='';document.getElementById('sq-name').value='';document.getElementById('sq-price').value='';
 }
-function toggleSale(id){
-  const s=squeezes.find(x=>x.id===id);
-  if(!s)return;
-  s.onSale=!s.onSale;
-  renderSq();
-}
-function saveSqSettings(id){
-  const s=squeezes.find(x=>x.id===id);
-  if(!s)return;
-  s.salePrice=parseInt(document.getElementById('sp-'+id).value)||0;
-  s.dispStock=parseInt(document.getElementById('ds-'+id).value)||0;
-  s.realLimit=parseInt(document.getElementById('rl-'+id).value)||0;
-  renderSq();
-}
-/* お気に入り */
-function toggleFav(id){
-  if(favorites.has(id)) favorites.delete(id);
-  else favorites.add(id);
-  renderSq();
-  updateFavCount();
-}
-function updateFavCount(){
-  const c=favorites.size;
-  const el=document.getElementById('fav-count');
-  el.textContent=c;
-  el.style.display=c>0?'block':'none';
-}
+async function delSq(id){await db.from('squeezes').delete().eq('id',id);}
+
+function toggleFav(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);renderSq();updateFavCount();}
+function updateFavCount(){const c=favorites.size;const el=document.getElementById('fav-count');el.textContent=c;el.style.display=c>0?'block':'none';}
 function openFavs(){
   const el=document.getElementById('fav-list');
-  const favSqs=squeezes.filter(s=>favorites.has(s.id));
-  if(!favSqs.length){el.innerHTML='<div class="empty">まだお気に入りがありません🤍<br><span style="font-size:0.7rem;">スクイーズの🤍を押してね！</span></div>';}
-  else{el.innerHTML='<div class="sq-grid">'+favSqs.map(sqCard).join('')+'</div>';}
+  const fs=squeezes.filter(s=>favorites.has(s.id));
+  el.innerHTML=fs.length?'<div class="sq-grid">'+fs.map(sqCard).join('')+'</div>':'<div class="empty">まだお気に入りがありません🤍</div>';
   document.getElementById('fav-overlay').classList.add('active');
 }
 function closeFavs(){document.getElementById('fav-overlay').classList.remove('active');}
 function favOutsideClose(e){if(e.target===document.getElementById('fav-overlay'))closeFavs();}
-function delSq(id){squeezes=squeezes.filter(s=>s.id!==id);litIds.delete(id);renderSq();}
 
-/* 購入フォーム */
 function openBuy(id){
-  const sq=squeezes.find(s=>s.id===id);
-  if(!sq)return;
+  const sq=squeezes.find(s=>s.id===id);if(!sq)return;
   buyingId=id;
-  document.getElementById('buy-prod-label').textContent=`${sq.e} ${sq.n}（¥${sq.p.toLocaleString()}）`;
-  document.getElementById('buy-form').style.display='block';
-  document.getElementById('buy-done').style.display='none';
-  document.getElementById('b-name').value='';
-  document.getElementById('b-addr').value='';
-  document.getElementById('b-tel').value='';
+  const dp=sq.on_sale&&sq.sale_price>0?sq.sale_price:sq.price;
+  document.getElementById('buy-prod-label').textContent=`${sq.emoji} ${sq.name}（¥${dp.toLocaleString()}）`;
+  document.getElementById('buy-form').style.display='block';document.getElementById('buy-done').style.display='none';
+  document.getElementById('b-name').value='';document.getElementById('b-addr').value='';document.getElementById('b-tel').value='';
   document.getElementById('buy-overlay').classList.add('active');
 }
-function closeBuy(){
-  document.getElementById('buy-overlay').classList.remove('active');
-  buyingId=null;
-}
+function closeBuy(){document.getElementById('buy-overlay').classList.remove('active');buyingId=null;}
 function buyOutsideClose(e){if(e.target===document.getElementById('buy-overlay'))closeBuy();}
-function submitBuy(){
+async function submitBuy(){
   const name=document.getElementById('b-name').value.trim();
   const addr=document.getElementById('b-addr').value.trim();
   const tel=document.getElementById('b-tel').value.trim();
   const pay=document.getElementById('b-pay').value;
   if(!name||!addr||!tel)return;
   const sq=squeezes.find(s=>s.id===buyingId);
-  if(sq){
-    sq.soldCount=(sq.soldCount||0)+1;
-    if(sq.realLimit>0&&sq.soldCount>=sq.realLimit) litIds.delete(sq.id);
-  }
-  const actPrice=sq&&sq.onSale&&sq.salePrice>0?sq.salePrice:sq?sq.p:0;
-  orders.unshift({name,addr,tel,pay,prod:sq?sq.n:'',price:actPrice,date:now(),id:Date.now()});
-  renderOrders();
-  renderSq();
-  updateFavCount();
-  document.getElementById('buy-form').style.display='none';
-  document.getElementById('buy-done').style.display='block';
+  const ap=sq&&sq.on_sale&&sq.sale_price>0?sq.sale_price:sq?sq.price:0;
+  await db.from('orders').insert({id:Date.now(),prod_name:sq?sq.name:'',price:ap,customer_name:name,address:addr,phone:tel,payment:pay,created_at:now()});
+  if(sq){const nc=(sq.sold_count||0)+1;await db.from('squeezes').update({sold_count:nc,is_lit:sq.real_limit>0&&nc>=sq.real_limit?false:sq.is_lit}).eq('id',buyingId);}
+  document.getElementById('buy-form').style.display='none';document.getElementById('buy-done').style.display='block';
 }
-
 function renderOrders(){
   const el=document.getElementById('orders-list');
   if(!orders.length){el.innerHTML='<div class="empty">まだ購入者がいません🌸</div>';return;}
-  el.innerHTML=orders.map(o=>`<div class="order-card">
-    <div class="order-name">👤 ${o.name}</div>
-    <div class="order-prod">${o.prod}（¥${o.price.toLocaleString()}）</div>
-    <div class="order-info">🏠 ${o.addr}<br>📞 ${o.tel}<br>💳 ${o.pay}<br><span style="color:#c0a0c0;font-size:0.66rem;">${o.date}</span></div>
-    <div style="text-align:right;margin-top:0.4rem;"><button class="delbtn" onclick="delOrder(${o.id})">削除</button></div>
-  </div>`).join('');
+  el.innerHTML=orders.map(o=>`<div class="order-card"><div class="order-name">👤 ${o.customer_name}</div><div class="order-prod">${o.prod_name}（¥${o.price.toLocaleString()}）</div><div class="order-info">🏠 ${o.address}<br>📞 ${o.phone}<br>💳 ${o.payment}<br><span style="color:#c0a0c0;font-size:0.66rem;">${o.created_at}</span></div><div style="text-align:right;margin-top:0.4rem;"><button class="delbtn" onclick="delOrder(${o.id})">削除</button></div></div>`).join('');
 }
-function delOrder(id){orders=orders.filter(o=>o.id!==id);renderOrders();}
+async function delOrder(id){await db.from('orders').delete().eq('id',id);}
 
 function renderNotices(){
   const el=document.getElementById('notice-list');
   if(!notices.length){el.innerHTML='<div class="empty">お知らせはありません</div>';return;}
-  el.innerHTML=notices.map(n=>`<div class="ntc-card">${n.tag?`<div class="ntc-tag">${n.tag}</div>`:''}
-    <div class="ntc-head"><span class="ntc-title">${n.title}</span><span class="ntc-date">${n.date}</span></div>
-    <div class="ntc-body">${n.body}</div>
-  </div>`).join('');
-  const sel=document.getElementById('staff-notice-list');
-  if(!sel)return;
-  sel.innerHTML=notices.map(n=>`<div class="litem"><div class="litem-head">
-    <span class="litem-ttl">${n.tag?`<span style="font-size:0.62rem;background:linear-gradient(135deg,#f8c8e0,#d4b8f0);color:#9040b0;border-radius:99px;padding:0.1rem 0.45rem;margin-right:0.3rem;">${n.tag}</span>`:''}${n.title}</span>
-    <button class="delbtn" onclick="delNotice(${n.id})">削除</button>
-  </div>
-  <div class="litem-date">${n.date}</div>
-  <div class="litem-body" style="margin-top:0.2rem;">${n.body}</div></div>`).join('');
+  el.innerHTML=notices.map(n=>`<div class="ntc-card">${n.tag?`<div class="ntc-tag">${n.tag}</div>`:''}<div class="ntc-head"><span class="ntc-title">${n.title}</span><span class="ntc-date">${n.created_at}</span></div><div class="ntc-body">${n.body}</div></div>`).join('');
+  const sel=document.getElementById('staff-notice-list');if(!sel)return;
+  sel.innerHTML=notices.map(n=>`<div class="litem"><div class="litem-head"><span class="litem-ttl">${n.tag?`<span style="font-size:0.62rem;background:linear-gradient(135deg,#f8c8e0,#d4b8f0);color:#9040b0;border-radius:99px;padding:0.1rem 0.45rem;margin-right:0.3rem;">${n.tag}</span>`:''}${n.title}</span><button class="delbtn" onclick="delNotice(${n.id})">削除</button></div><div class="litem-date">${n.created_at}</div><div class="litem-body" style="margin-top:0.2rem;">${n.body}</div></div>`).join('');
 }
-function postNotice(){
+async function postNotice(){
   const tag=document.getElementById('ntc-tag').value;
   const title=document.getElementById('ntc-title').value.trim();
   const body=document.getElementById('ntc-body').value.trim();
   if(!title||!body)return;
   const d=new Date();
   const date=`${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`;
-  notices.unshift({tag,title,body,date,id:Date.now()});
-  document.getElementById('ntc-tag').value='';
-  document.getElementById('ntc-title').value='';
-  document.getElementById('ntc-body').value='';
-  renderNotices();
+  await db.from('notices').insert({id:Date.now(),tag,title,body,created_at:date});
+  document.getElementById('ntc-tag').value='';document.getElementById('ntc-title').value='';document.getElementById('ntc-body').value='';
 }
-function delNotice(id){notices=notices.filter(n=>n.id!==id);renderNotices();}
+async function delNotice(id){await db.from('notices').delete().eq('id',id);}
 
-let lives=[];
-function fmtLiveDate(str){
-  const d=new Date(str+'T00:00:00');
-  const w=['日','月','火','水','木','金','土'][d.getDay()];
-  return`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${w}）`;
-}
+function fmtLiveDate(str){const d=new Date(str+'T00:00:00');const w=['日','月','火','水','木','金','土'][d.getDay()];return`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${w}）`;}
 function renderLives(){
-  // お客さん向け（日付順に並べる）
   const el=document.getElementById('live-list');
-  if(!lives.length){
-    el.innerHTML='<div class="live-empty"><div class="live-empty-icon">📅</div><div class="live-empty-msg">現在予定されている配信はありません🌸<br>お楽しみに！</div></div>';
-  }else{
-    const sorted=[...lives].sort((a,b)=>a.date.localeCompare(b.date));
-    el.innerHTML=sorted.map(l=>`<div class="live-card">
-      <div class="live-date-badge">🎥 ${fmtLiveDate(l.date)}</div>
-      <div class="live-title">${l.title}</div>
-      <div class="live-time">🕐 ${l.time}</div>
-      ${l.note?`<div class="live-note">${l.note}</div>`:''}
-    </div>`).join('');
-  }
-  // スタッフ向け一覧
-  const sel=document.getElementById('staff-live-list');
-  if(!sel)return;
+  if(!lives.length){el.innerHTML='<div class="live-empty"><div class="live-empty-icon">📅</div><div class="live-empty-msg">現在予定されている配信はありません🌸<br>お楽しみに！</div></div>';}
+  else el.innerHTML=lives.map(l=>`<div class="live-card"><div class="live-date-badge">🎥 ${fmtLiveDate(l.date)}</div><div class="live-title">${l.title}</div><div class="live-time">🕐 ${l.time}</div>${l.note?`<div class="live-note">${l.note}</div>`:''}</div>`).join('');
+  const sel=document.getElementById('staff-live-list');if(!sel)return;
   if(!lives.length){sel.innerHTML='<div class="empty">まだ日程がありません</div>';return;}
-  const sorted2=[...lives].sort((a,b)=>a.date.localeCompare(b.date));
-  sel.innerHTML=sorted2.map(l=>`<div class="litem"><div class="litem-head">
-    <span class="litem-ttl">${fmtLiveDate(l.date)} ${l.time}</span>
-    <button class="delbtn" onclick="delLive(${l.id})">削除</button>
-  </div>
-  <div class="litem-body" style="margin-top:0.2rem;">${l.title}${l.note?`<br><span style="color:#c490b8;">${l.note}</span>`:''}</div></div>`).join('');
+  sel.innerHTML=lives.map(l=>`<div class="litem"><div class="litem-head"><span class="litem-ttl">${fmtLiveDate(l.date)} ${l.time}</span><button class="delbtn" onclick="delLive(${l.id})">削除</button></div><div class="litem-body" style="margin-top:0.2rem;">${l.title}${l.note?`<br><span style="color:#c490b8;">${l.note}</span>`:''}</div></div>`).join('');
 }
-function addLive(){
-  const date=document.getElementById('lv-date').value;
-  const time=document.getElementById('lv-time').value;
-  const title=document.getElementById('lv-title').value.trim();
-  const note=document.getElementById('lv-note').value.trim();
+async function addLive(){
+  const date=document.getElementById('lv-date').value;const time=document.getElementById('lv-time').value;
+  const title=document.getElementById('lv-title').value.trim();const note=document.getElementById('lv-note').value.trim();
   if(!date||!time||!title)return;
-  lives.push({date,time,title,note,id:Date.now()});
-  document.getElementById('lv-date').value='';
-  document.getElementById('lv-time').value='';
-  document.getElementById('lv-title').value='';
-  document.getElementById('lv-note').value='';
-  renderLives();
+  await db.from('lives').insert({id:Date.now(),date,time,title,note});
+  document.getElementById('lv-date').value='';document.getElementById('lv-time').value='';document.getElementById('lv-title').value='';document.getElementById('lv-note').value='';
 }
-function delLive(id){lives=lives.filter(l=>l.id!==id);renderLives();}
+async function delLive(id){await db.from('lives').delete().eq('id',id);}
 
 function showPage(p){
   document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
@@ -756,73 +553,39 @@ function openStaff(){document.getElementById('overlay').classList.add('active');
 function closeStaff(){document.getElementById('overlay').classList.remove('active');}
 function outsideClose(e){if(e.target===document.getElementById('overlay'))closeStaff();}
 function checkPw(){
-  if(document.getElementById('pw-inp').value===PW){
-    document.getElementById('pw-area').style.display='none';
-    document.getElementById('sdash').style.display='block';
-  }else{
-    document.getElementById('pw-err').style.display='block';
-    document.getElementById('pw-inp').value='';
-  }
+  if(document.getElementById('pw-inp').value===PW){document.getElementById('pw-area').style.display='none';document.getElementById('sdash').style.display='block';}
+  else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-inp').value='';}
 }
-function logout(){
-  document.getElementById('pw-area').style.display='block';
-  document.getElementById('sdash').style.display='none';
-  document.getElementById('pw-inp').value='';
-  document.getElementById('pw-err').style.display='none';
-}
-function showTab(id,btn){
-  document.querySelectorAll('.stab-pane').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.stab').forEach(el=>el.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  btn.classList.add('active');
-}
+function logout(){document.getElementById('pw-area').style.display='block';document.getElementById('sdash').style.display='none';document.getElementById('pw-inp').value='';document.getElementById('pw-err').style.display='none';}
+function showTab(id,btn){document.querySelectorAll('.stab-pane').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.stab').forEach(el=>el.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
 function now(){return new Date().toLocaleDateString('ja-JP',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});}
 function saveClaim(){
-  const name=document.getElementById('c-name').value.trim();
-  const prod=document.getElementById('c-prod').value;
-  const body=document.getElementById('c-body').value.trim();
-  const other=document.getElementById('c-other').value.trim();
-  const stat=document.getElementById('c-stat').value;
+  const name=document.getElementById('c-name').value.trim();const prod=document.getElementById('c-prod').value;
+  const body=document.getElementById('c-body').value.trim();const other=document.getElementById('c-other').value.trim();const stat=document.getElementById('c-stat').value;
   if(!name||!body)return;
   claims.unshift({name,prod,body,other,stat,date:now(),id:Date.now()});
-  document.getElementById('c-name').value='';
-  document.getElementById('c-body').value='';
-  document.getElementById('c-other').value='';
-  renderClaims();
+  document.getElementById('c-name').value='';document.getElementById('c-body').value='';document.getElementById('c-other').value='';renderClaims();
 }
 function renderClaims(){
-  const el=document.getElementById('claim-list');
-  if(!claims.length){el.innerHTML='<div class="empty">まだ記録がありません🌸</div>';return;}
+  const el=document.getElementById('claim-list');if(!claims.length){el.innerHTML='<div class="empty">まだ記録がありません🌸</div>';return;}
   el.innerHTML=claims.map(c=>`<div class="litem"><div class="litem-head"><span class="litem-ttl">${c.name}<span class="bstat ${c.stat==='done'?'bdone':'bopen'}">${c.stat==='done'?'解決済み':'対応中'}</span></span><button class="delbtn" onclick="delClaim(${c.id})">削除</button></div><div class="litem-date">${c.date}｜商品：${c.prod}</div><div class="litem-body" style="margin-top:0.25rem;">${c.body}</div>${c.other?`<div style="margin-top:0.22rem;font-size:0.7rem;color:#c490b8;">📎 ${c.other}</div>`:''}</div>`).join('');
 }
 function delClaim(id){claims=claims.filter(c=>c.id!==id);renderClaims();}
 function saveMemo(){
-  const t=document.getElementById('m-ttl').value.trim();
-  const b=document.getElementById('m-body').value.trim();
-  if(!t||!b)return;
-  memos.unshift({t,b,date:now(),id:Date.now()});
-  document.getElementById('m-ttl').value='';
-  document.getElementById('m-body').value='';
-  renderMemos();
+  const t=document.getElementById('m-ttl').value.trim();const b=document.getElementById('m-body').value.trim();if(!t||!b)return;
+  memos.unshift({t,b,date:now(),id:Date.now()});document.getElementById('m-ttl').value='';document.getElementById('m-body').value='';renderMemos();
 }
 function renderMemos(){
-  const el=document.getElementById('memo-list');
-  if(!memos.length){el.innerHTML='<div class="empty">まだメモがありません🌸</div>';return;}
+  const el=document.getElementById('memo-list');if(!memos.length){el.innerHTML='<div class="empty">まだメモがありません🌸</div>';return;}
   el.innerHTML=memos.map(m=>`<div class="litem"><div class="litem-head"><span class="litem-ttl">${m.t}</span><button class="delbtn" onclick="delMemo(${m.id})">削除</button></div><div class="litem-date">${m.date}</div><div class="litem-body" style="margin-top:0.25rem;">${m.b}</div></div>`).join('');
 }
 function delMemo(id){memos=memos.filter(m=>m.id!==id);renderMemos();}
 function saveSale(){
-  const item=document.getElementById('s-prod').value;
-  const price=parseInt(document.getElementById('s-price').value);
-  if(!item||!price||price<=0)return;
-  sales.unshift({item,price,date:now(),id:Date.now()});
-  document.getElementById('s-price').value='';
-  renderSales();
+  const item=document.getElementById('s-prod').value;const price=parseInt(document.getElementById('s-price').value);if(!item||!price||price<=0)return;
+  sales.unshift({item,price,date:now(),id:Date.now()});document.getElementById('s-price').value='';renderSales();
 }
 function renderSales(){
-  const el=document.getElementById('sales-list');
-  const total=sales.reduce((s,r)=>s+r.price,0);
-  document.getElementById('s-total').textContent='¥'+total.toLocaleString();
+  const el=document.getElementById('sales-list');const total=sales.reduce((s,r)=>s+r.price,0);document.getElementById('s-total').textContent='¥'+total.toLocaleString();
   if(!sales.length){el.innerHTML='<div class="empty">まだ記録がありません🌸</div>';return;}
   el.innerHTML=sales.map(s=>`<div class="srow"><div><div style="font-size:0.76rem;color:#7a5a7a;">${s.item}</div><div style="font-size:0.62rem;color:#c0a0c0;">${s.date}</div></div><div style="display:flex;align-items:center;gap:0.45rem;"><span style="font-size:0.82rem;font-weight:700;color:#b060c0;">¥${s.price.toLocaleString()}</span><button class="delbtn" onclick="delSale(${s.id})">削除</button></div></div>`).join('');
 }
@@ -830,21 +593,17 @@ function delSale(id){sales=sales.filter(s=>s.id!==id);renderSales();}
 function doSearch(){
   const q=document.getElementById('srch-inp').value.trim();
   if(!q){document.getElementById('srch-result').style.display='none';document.getElementById('no-result').style.display='none';return;}
-  const res=squeezes.filter(s=>s.n.includes(q)||s.e.includes(q));
-  if(res.length){
-    document.getElementById('srch-result').style.display='block';
-    document.getElementById('srch-grid').innerHTML=res.map(sqCard).join('');
-    document.getElementById('no-result').style.display='none';
-  }else{
-    document.getElementById('srch-result').style.display='none';
-    document.getElementById('no-result').style.display='block';
-  }
+  const res=squeezes.filter(s=>s.name.includes(q)||s.emoji.includes(q));
+  if(res.length){document.getElementById('srch-result').style.display='block';document.getElementById('srch-grid').innerHTML=res.map(sqCard).join('');document.getElementById('no-result').style.display='none';}
+  else{document.getElementById('srch-result').style.display='none';document.getElementById('no-result').style.display='block';}
 }
 function searchTag(q){document.getElementById('srch-inp').value=q;doSearch();}
 
-renderSq();
-renderNotices();
-renderLives();
+async function init(){
+  await Promise.all([fetchSqueezes(),fetchNotices(),fetchLives(),fetchOrders()]);
+  setupRealtime();
+}
+init();
 </script>
 </body>
 </html>
