@@ -379,6 +379,29 @@ const SURL='https://detrbkhpncnwqdphadcn.supabase.co';
 const SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRldHJia2hwbmNud3FkcGhhZGNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTExODcsImV4cCI6MjA5NjIyNzE4N30.kpojQDLvESLhtmyGXXtxqIsoLUdGdZG88ryiQ1VBGB8';
 const db=supabase.createClient(SURL,SKEY);
 const PW='ohina0000';
+// ---- 絵文字→自作アイコン 自動置きかえ ----
+const ICONS={'🏠':'home','🧸':'paw','🔔':'mail','🔍':'search','📅':'calendar','🎥':'camera','✨':'sparkle','💬':'chat','❤️':'heart_red','❤':'heart_red','🤍':'heart_white','🔒':'lock','🎀':'ribbon','🌷':'tulip','🌸':'sakura','📋':'clipboard','🔥':'fire'};
+const ICON_VER='3';
+const ICON_RE=new RegExp('('+Object.keys(ICONS).sort((a,b)=>b.length-a.length).map(e=>e.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','g');
+const ICON_SKIP=new Set(['SCRIPT','STYLE','OPTION','SELECT','TEXTAREA','INPUT','TITLE']);
+function iconify(root){
+  if(!root)return;
+  if(root.nodeType===3){iconifyText(root);return;}
+  if(root.nodeType!==1&&root.nodeType!==11)return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>(n.parentNode&&!ICON_SKIP.has(n.parentNode.nodeName)&&ICON_RE.test(n.nodeValue))?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
+  const nodes=[];let n;while((n=w.nextNode()))nodes.push(n);
+  nodes.forEach(iconifyText);
+}
+function iconifyText(node){
+  if(!node.parentNode||ICON_SKIP.has(node.parentNode.nodeName))return;
+  const parts=node.nodeValue.split(ICON_RE);if(parts.length<2)return;
+  const frag=document.createDocumentFragment();
+  parts.forEach(t=>{if(!t)return;const k=ICONS[t];if(k){const im=document.createElement('img');im.className='ico';im.src=`icons/site/${k}.png?v=${ICON_VER}`;im.alt=t;frag.appendChild(im);}else frag.appendChild(document.createTextNode(t));});
+  node.parentNode.replaceChild(frag,node);
+}
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(iconify))).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('DOMContentLoaded',()=>iconify(document.body));
+
 let claims=[],memos=[],sales=[];
 let squeezes=[],notices=[],lives=[],orders=[];
 let favorites=new Set();
