@@ -18,6 +18,10 @@ html,body{height:100%;background:#e6e0f8;font-family:'Klee One',sans-serif;}
 .bottom-nav{display:flex;background:white;border-top:1.5px solid #e4defa;flex-shrink:0;padding-bottom:env(safe-area-inset-bottom);}
 .bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.6rem 0 0.5rem;cursor:pointer;gap:0.15rem;-webkit-tap-highlight-color:transparent;}
 .bnav-icon{font-size:1.4rem;line-height:1;}
+.pick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:0.7rem;}
+.pick{aspect-ratio:1;border-radius:12px;border:2px solid #e4defa;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;}
+.pick img{width:72%;height:72%;object-fit:contain;}
+.pick.on{border-color:#8f7be8;box-shadow:0 0 0 3px #dcd4ff;background:#f3f0ff;}
 .ico{height:1.25em;width:auto;vertical-align:-0.28em;}
 .ico.lg{height:1.6em;}
 img.bnav-icon{width:28px;height:28px;object-fit:contain;}
@@ -308,7 +312,10 @@ img.svc-icon{width:44px;height:44px;object-fit:contain;display:block;margin:0 au
       </div>
       <div class="stab-pane" id="tab-sqmgr">
         <div class="subsec" style="margin-top:0;">新しい商品を追加</div>
-        <label class="flabel">絵文字</label><input class="finput" id="sq-emoji" placeholder="例：🍰" maxlength="4">
+        <label class="flabel">絵をえらぶ 🎨</label>
+        <div class="pick-grid" id="sq-pick"></div>
+        <input type="hidden" id="sq-emoji" value="">
+        <label class="flabel">ならんでいる絵にないときは、絵文字を打つ</label><input class="finput" id="sq-emoji-text" placeholder="例：🍰" maxlength="4" oninput="pickClear()">
         <label class="flabel">商品名</label><input class="finput" id="sq-name" placeholder="例：ケーキスクイーズ">
         <label class="flabel">値段（円）</label><input class="finput" id="sq-price" type="number" placeholder="例：580">
         <button class="sbtn" onclick="addSq()">✨ 追加する</button>
@@ -401,6 +408,22 @@ function iconifyText(node){
 }
 new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(iconify))).observe(document.documentElement,{childList:true,subtree:true});
 document.addEventListener('DOMContentLoaded',()=>iconify(document.body));
+// ---- 商品の絵えらび ----
+function renderPick(){
+  const el=document.getElementById('sq-pick');if(!el)return;
+  const seen=new Set();const items=[];
+  for(const [e,f] of Object.entries(ICONS)){if(seen.has(f))continue;seen.add(f);items.push([e,f]);}
+  const cur=document.getElementById('sq-emoji').value;
+  el.innerHTML=items.map(([e,f])=>`<button type="button" class="pick${cur===e?' on':''}" data-e="${e}" onclick="pickIcon('${e}')"><img src="icons/site/${f}.png?v=${ICON_VER}" alt="${e}"></button>`).join('');
+}
+function pickIcon(e){
+  const h=document.getElementById('sq-emoji');h.value=(h.value===e?'':e);
+  document.getElementById('sq-emoji-text').value='';
+  document.querySelectorAll('#sq-pick .pick').forEach(b=>b.classList.toggle('on',b.dataset.e===h.value));
+}
+function pickClear(){document.getElementById('sq-emoji').value='';document.querySelectorAll('#sq-pick .pick').forEach(b=>b.classList.remove('on'));}
+document.addEventListener('DOMContentLoaded',renderPick);
+
 
 let claims=[],memos=[],sales=[];
 let squeezes=[],notices=[],lives=[],orders=[];
@@ -484,12 +507,12 @@ async function saveSqSettings(id){
   await db.from('squeezes').update({sale_price:sp,disp_stock:ds,real_limit:rl}).eq('id',id);
 }
 async function addSq(){
-  const e=document.getElementById('sq-emoji').value.trim()||'🧸';
+  const e=document.getElementById('sq-emoji').value.trim()||document.getElementById('sq-emoji-text').value.trim()||'🧸';
   const n=document.getElementById('sq-name').value.trim();
   const p=parseInt(document.getElementById('sq-price').value);
   if(!n||!p||p<=0)return;
   await db.from('squeezes').insert({id:Date.now(),emoji:e,name:n,price:p,is_new:true});
-  document.getElementById('sq-emoji').value='';document.getElementById('sq-name').value='';document.getElementById('sq-price').value='';
+  document.getElementById('sq-emoji').value='';document.getElementById('sq-emoji-text').value='';document.getElementById('sq-name').value='';document.getElementById('sq-price').value='';renderPick();
 }
 async function delSq(id){await db.from('squeezes').delete().eq('id',id);}
 
