@@ -1,0 +1,43 @@
+# Supabase無料枠は1週間無操作で一時停止するため、1日1回だけREST APIを軽く叩いて「使っている」状態を保つ。
+# 接続先URLと公開キー(anon key)はページ本体 OHinasama.html に書かれているものをそのまま使う（公開前提の値）。
+# あわせて週1回、小さなファイルを更新してコミットし、GitHub側が「60日間動きのないリポジトリ」として
+# このスケジュール実行を止めてしまうのを防ぐ。
+name: keep-supabase-awake
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 毎日 06:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ping Supabase REST API
+        run: |
+          SURL=$(grep -o "const SURL='[^']*'" OHinasama.html | sed "s/const SURL='//;s/'//")
+          SKEY=$(grep -o "const SKEY='[^']*'" OHinasama.html | sed "s/const SKEY='//;s/'//")
+          echo "ping $SURL"
+          code=$(curl -s -o /tmp/out.txt -w "%{http_code}" "$SURL/rest/v1/squeezes?select=id&limit=1" \
+            -H "apikey: $SKEY" -H "Authorization: Bearer $SKEY")
+          echo "http=$code"; head -c 300 /tmp/out.txt; echo
+          # 200/206=正常。停止中は 5xx やDNSエラーになるが、ワークフロー自体は失敗にしない（通知が煩わしいため）
+          test "$code" = "200" -o "$code" = "206" && echo "OK" || echo "::warning::Supabase responded $code (paused?)"
+
+      - name: Weekly keepalive commit (Mondays)
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if [ "$(date -u +%u)" = "1" ]; then
+            date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/keepalive
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .github/keepalive
+            git commit -m "chore: weekly keepalive" && git push || echo "nothing to commit"
+          else
+            echo "not Monday, skip"
+          fi
