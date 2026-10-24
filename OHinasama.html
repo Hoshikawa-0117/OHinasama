@@ -387,9 +387,9 @@ const SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI
 const db=supabase.createClient(SURL,SKEY);
 const PW='ohina0000';
 // ---- 絵文字→自作アイコン 自動置きかえ ----
-const ICONS={'🏠':'home','🧸':'paw','🔔':'mail','🔍':'search','📅':'calendar','🎥':'camera','✨':'sparkle','💬':'chat','❤️':'heart_red','❤':'heart_red','🤍':'heart_white','🔒':'lock','🎀':'ribbon','🌷':'tulip','🌸':'sakura','📋':'clipboard','🔥':'fire','🕐':'clock','💕':'hearts','🎁':'gift','🍱':'bento','🍬':'candy','🐾':'paw_purple','🔵':'ball','🍙':'onigiri','🍞':'bread','🍡':'mochi_pink','🍥':'mochi_white','🧁':'cupcake'};
+const ICONS={'🏠':'home','🧸':'paw','🔔':'mail','🔍':'search','📅':'calendar','🎥':'camera','✨':'sparkle','💬':'chat','❤️':'heart_red','❤':'heart_red','🤍':'heart_white','🔒':'lock','🎀':'ribbon','🌷':'tulip','🌸':'sakura','📋':'clipboard','🔥':'fire','🕐':'clock','💕':'hearts','🎁':'gift','🍱':'bento','🍬':'candy','🐾':'paw_purple','🔵':'ball','🍙':'onigiri','🍞':'bread','🍡':'mochi_pink','🍥':'mochi_white','🧁':'cupcake','🛒':'cart'};
 // 「絵をえらぶ」に並べる順番（本人の最新シートの順）
-const PICK=['🏠','🧸','🔔','🔍','📅','🎥','✨','💬','❤️','🤍','🔒','🎀','🌷','🌸','📋','🔥','🕐','💕','🎁','🍱','🍬','🐾','🔵','🍙','🍞','🍡','🍥','🧁'];
+const PICK=['🏠','🧸','🔔','🔍','📅','🎥','✨','💬','❤️','🤍','🔒','🎀','🌷','🌸','📋','🔥','🕐','💕','🎁','🍱','🍬','🐾','🔵','🍙','🍞','🍡','🍥','🧁','🛒'];
 const ICON_VER='3';
 const ICON_RE=new RegExp('('+Object.keys(ICONS).sort((a,b)=>b.length-a.length).map(e=>e.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','g');
 const ICON_SKIP=new Set(['SCRIPT','STYLE','OPTION','SELECT','TEXTAREA','INPUT','TITLE']);
