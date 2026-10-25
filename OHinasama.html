@@ -125,6 +125,16 @@ img.svc-icon{width:44px;height:44px;object-fit:contain;display:block;margin:0 au
 .logbtn{background:none;border:1.5px solid #d8d0fa;border-radius:9px;padding:0.34rem 0.85rem;font-size:0.7rem;color:#b3a9d9;cursor:pointer;font-family:inherit;}
 .closebtn{background:none;border:none;font-size:1.3rem;cursor:pointer;padding:0;line-height:1;}
 .subsec{font-size:0.8rem;font-weight:600;color:#8f7be8;margin:0.9rem 0 0.5rem;}
+.hand-card{background:white;border-radius:14px;border:1.5px solid #e4defa;padding:0.75rem 0.9rem;margin-bottom:0.5rem;display:flex;justify-content:space-between;align-items:center;gap:0.6rem;}
+.hand-name{font-size:0.86rem;font-weight:600;color:#6a5f8a;}
+.hand-info{font-size:0.7rem;color:#a89ccf;line-height:1.7;margin-top:0.15rem;}
+.hand-done{flex-shrink:0;background:linear-gradient(135deg,#5fcf9a,#3fb59a);color:white;border:none;border-radius:99px;padding:0.5rem 0.8rem;font-size:0.72rem;font-weight:600;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.hand-done:active{transform:scale(0.96);}
+.hand-count{display:inline-block;min-width:18px;background:#ff8fb8;color:white;border-radius:99px;font-size:0.6rem;padding:0.05rem 0.35rem;margin-left:0.2rem;}
+.buy-note{font-size:0.68rem;color:#a89ccf;background:#f3f0ff;border-radius:10px;padding:0.5rem 0.7rem;margin-bottom:0.7rem;line-height:1.6;}
+.hand-recent{font-size:0.66rem;color:#b3a9d9;margin-top:0.6rem;}
+.hand-recent span{text-decoration:line-through;}
+
 .sqli{background:white;border-radius:11px;border:1.5px solid #e4defa;padding:0.72rem 0.9rem;margin-bottom:0.48rem;}
 .sqli-row{display:flex;justify-content:space-between;align-items:center;}
 .sqli-detail{margin-top:0.55rem;padding-top:0.5rem;border-top:1px dashed #e4defa;display:flex;flex-direction:column;gap:0.42rem;}
@@ -279,7 +289,8 @@ img.svc-icon{width:44px;height:44px;object-fit:contain;display:block;margin:0 au
         <button class="logbtn" onclick="logout()">ログアウト</button>
       </div>
       <div class="stabs">
-        <button class="stab active" onclick="showTab('claim',this)">📝 クレーム</button>
+        <button class="stab active" onclick="showTab('hand',this)">🎁 渡す<span class="hand-count" id="hand-count" style="display:none;">0</span></button>
+        <button class="stab" onclick="showTab('claim',this)">📝 クレーム</button>
         <button class="stab" onclick="showTab('memo',this)">🗒️ メモ</button>
         <button class="stab" onclick="showTab('sales',this)">💰 売上</button>
         <button class="stab" onclick="showTab('sqmgr',this)">➕ 商品管理</button>
@@ -287,7 +298,18 @@ img.svc-icon{width:44px;height:44px;object-fit:contain;display:block;margin:0 au
         <button class="stab" onclick="showTab('noticemgr',this)">📢 お知らせ</button>
         <button class="stab" onclick="showTab('livemgr',this)">📅 配信日程</button>
       </div>
-      <div class="stab-pane active" id="tab-claim">
+      <div class="stab-pane active" id="tab-hand">
+        <div class="subsec" style="margin-top:0;">まだ渡していない人 🎁</div>
+        <div id="hand-list"><div class="empty">ぜんぶ渡しました🌸</div></div>
+        <div class="hand-recent" id="hand-recent"></div>
+        <div class="subsec">手で追加する</div>
+        <label class="flabel">お客さまの名前</label><input class="finput" id="h-name" placeholder="例：ゆいちゃん">
+        <label class="flabel">スクイーズ</label><select class="fsel" id="h-prod"></select>
+        <label class="flabel">ゲットしたライブ配信</label><select class="fsel" id="h-live" onchange="document.getElementById('h-date').style.display=this.value==='_other'?'block':'none'"></select>
+        <input class="finput" id="h-date" type="date" style="display:none;margin-top:0.4rem;">
+        <button class="sbtn" onclick="addHandoff()">🎁 リストに入れる</button>
+      </div>
+      <div class="stab-pane" id="tab-claim">
         <label class="flabel">お客様名</label><input class="finput" id="c-name" placeholder="例：○○さん">
         <label class="flabel">商品名</label><select class="fsel" id="c-prod"></select>
         <label class="flabel">クレーム内容</label><textarea class="ftarea" id="c-body" placeholder="クレームの内容を詳しく…"></textarea>
@@ -361,9 +383,10 @@ img.svc-icon{width:44px;height:44px;object-fit:contain;display:block;margin:0 au
     </div>
     <div class="buy-prod-name" id="buy-prod-label"></div>
     <div id="buy-form">
-      <label class="flabel">お名前 ✍️</label><input class="finput" id="b-name" placeholder="例：○○ ○○">
-      <label class="flabel">住所 🏠</label><input class="finput" id="b-addr" placeholder="例：東京都○○区…">
-      <label class="flabel">電話番号 📞</label><input class="finput" id="b-tel" type="tel" placeholder="例：090-0000-0000">
+      <div class="buy-note">🌸 おままごと用のお店です。本物の住所や電話番号は入れないでね</div>
+      <label class="flabel">お名前 ✍️</label><input class="finput" id="b-name" placeholder="例：ゆいちゃん（ニックネームでOK）">
+      <label class="flabel">住所 🏠</label><input class="finput" id="b-addr" placeholder="例：おかしの国1-2-3（ごっこでOK）">
+      <label class="flabel">電話番号 📞</label><input class="finput" id="b-tel" type="tel" placeholder="例：000-0000-0000（ごっこでOK）">
       <label class="flabel">お支払い方法 💳</label>
       <select class="fsel" id="b-pay">
         <option value="現金">現金</option><option value="クレジットカード">クレジットカード</option>
@@ -387,7 +410,7 @@ const SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI
 const db=supabase.createClient(SURL,SKEY);
 const PW='ohina0000';
 // ---- 絵文字→自作アイコン 自動置きかえ ----
-const ICONS={'🏠':'home','🧸':'paw','🔔':'mail','🔍':'search','📅':'calendar','🎥':'camera','✨':'sparkle','💬':'chat','❤️':'heart_red','❤':'heart_red','🤍':'heart_white','🔒':'lock','🎀':'ribbon','🌷':'tulip','🌸':'sakura','📋':'clipboard','🔥':'fire','🕐':'clock','💕':'hearts','🎁':'gift','🍱':'bento','🍬':'candy','🐾':'paw_purple','🔵':'ball','🍙':'onigiri','🍞':'bread','🍡':'mochi_pink','🍥':'mochi_white','🧁':'cupcake','🛒':'cart','🍭':'candy','⭐':'star','⭐️':'star','🍮':'pudding','🦭':'sticker','💤':'pillow','💎':'gem'};
+const ICONS={'🏠':'home','🧸':'paw','🔔':'mail','🔍':'search','📅':'calendar','🎥':'camera','✨':'sparkle','💬':'chat','❤️':'heart_red','❤':'heart_red','🤍':'heart_white','🔒':'lock','🎀':'ribbon','🌷':'tulip','🌸':'sakura','📋':'clipboard','🔥':'fire','🕐':'clock','💕':'hearts','🎁':'gift','🍱':'bento','🍬':'candy','🐾':'paw_purple','🔵':'ball','🍙':'onigiri','🍞':'bread','🍡':'mochi_pink','🍥':'mochi_white','🧁':'cupcake','🛒':'cart','⭐':'star','⭐️':'star','🍮':'pudding','🦭':'sticker','💤':'pillow','💎':'gem','🍭':'candy'};
 // 「絵をえらぶ」に並べる順番（本人の最新シートの順）
 const PICK=['🏠','🧸','🔔','🔍','📅','🎥','✨','💬','❤️','🤍','🔒','🎀','🌷','🌸','📋','🔥','🕐','💕','🎁','🍱','🍬','🐾','🔵','🍙','🍞','🍡','🍥','🧁','🛒','⭐','🍮','🦭','💤','💎'];
 const ICON_VER='7';
@@ -426,21 +449,30 @@ function pickClear(){document.getElementById('sq-emoji').value='';document.query
 document.addEventListener('DOMContentLoaded',renderPick);
 
 
-let claims=[],memos=[],sales=[];
+let claims=[],memos=[],sales=[],handoffs=[];
 let squeezes=[],notices=[],lives=[],orders=[];
-let favorites=new Set();
+let favorites=new Set();try{favorites=new Set(JSON.parse(localStorage.getItem('ohina_favs')||'[]'));}catch(e){}
+function saveFavs(){try{localStorage.setItem('ohina_favs',JSON.stringify([...favorites]));}catch(e){}}
 let buyingId=null;
 
 async function fetchSqueezes(){const{data}=await db.from('squeezes').select('*').order('id');squeezes=data||[];renderSq();}
 async function fetchNotices(){const{data}=await db.from('notices').select('*').order('id',{ascending:false});notices=data||[];renderNotices();}
 async function fetchLives(){const{data}=await db.from('lives').select('*').order('date');lives=data||[];renderLives();}
 async function fetchOrders(){const{data}=await db.from('orders').select('*').order('id',{ascending:false});orders=data||[];renderOrders();}
+async function fetchHandoffs(){const{data,error}=await db.from('handoffs').select('*').order('id',{ascending:false});if(error)console.warn('handoffs',error.message);handoffs=data||[];renderHandoffs();}
+async function fetchClaims(){const{data,error}=await db.from('claims').select('*').order('id',{ascending:false});if(error)console.warn('claims',error.message);claims=data||[];renderClaims();}
+async function fetchMemos(){const{data,error}=await db.from('memos').select('*').order('id',{ascending:false});if(error)console.warn('memos',error.message);memos=data||[];renderMemos();}
+async function fetchSales(){const{data,error}=await db.from('sales').select('*').order('id',{ascending:false});if(error)console.warn('sales',error.message);sales=data||[];renderSales();}
 function setupRealtime(){
   db.channel('all')
     .on('postgres_changes',{event:'*',schema:'public',table:'squeezes'},fetchSqueezes)
     .on('postgres_changes',{event:'*',schema:'public',table:'notices'},fetchNotices)
     .on('postgres_changes',{event:'*',schema:'public',table:'lives'},fetchLives)
     .on('postgres_changes',{event:'*',schema:'public',table:'orders'},fetchOrders)
+    .on('postgres_changes',{event:'*',schema:'public',table:'handoffs'},fetchHandoffs)
+    .on('postgres_changes',{event:'*',schema:'public',table:'claims'},fetchClaims)
+    .on('postgres_changes',{event:'*',schema:'public',table:'memos'},fetchMemos)
+    .on('postgres_changes',{event:'*',schema:'public',table:'sales'},fetchSales)
     .subscribe();
 }
 
@@ -469,6 +501,7 @@ function renderSq(){
   const opts=squeezes.map(s=>`<option value="${s.name}">${s.emoji} ${s.name}（¥${s.price}）</option>`).join('');
   document.getElementById('c-prod').innerHTML=opts;
   document.getElementById('s-prod').innerHTML=opts;
+  const hp=document.getElementById('h-prod');if(hp)hp.innerHTML=squeezes.map(s=>`<option value="${s.id}">${s.emoji} ${s.name}</option>`).join('');
   renderSqList();updateFavCount();
 }
 function renderSqList(){
@@ -517,7 +550,7 @@ async function addSq(){
 }
 async function delSq(id){await db.from('squeezes').delete().eq('id',id);}
 
-function toggleFav(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);renderSq();updateFavCount();}
+function toggleFav(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);saveFavs();renderSq();updateFavCount();}
 function updateFavCount(){const c=favorites.size;const el=document.getElementById('fav-count');el.textContent=c;el.style.display=c>0?'block':'none';}
 function openFavs(){
   const el=document.getElementById('fav-list');
@@ -549,6 +582,8 @@ async function submitBuy(){
   const ap=sq&&sq.on_sale&&sq.sale_price>0?sq.sale_price:sq?sq.price:0;
   await db.from('orders').insert({id:Date.now(),prod_name:sq?sq.name:'',price:ap,customer_name:name,address:addr,phone:tel,payment:pay,created_at:now()});
   if(sq){const nc=(sq.sold_count||0)+1;await db.from('squeezes').update({sold_count:nc,is_lit:sq.real_limit>0&&nc>=sq.real_limit?false:sq.is_lit}).eq('id',buyingId);}
+  // 🎁 渡していない人リストにも自動で入れる（今日の配信があればその日、なければ今日）
+  if(sq){const today=todayStr();const lv=lives.find(l=>l.date===today);await db.from('handoffs').insert({id:Date.now()+1,customer_name:name,squeeze_id:sq.id,squeeze_name:`${sq.emoji} ${sq.name}`,live_date:lv?lv.date:today,status:'open',created_at:now()});}
   document.getElementById('buy-form').style.display='none';document.getElementById('buy-done').style.display='block';
 }
 function renderOrders(){
@@ -578,7 +613,14 @@ async function postNotice(){
 async function delNotice(id){await db.from('notices').delete().eq('id',id);}
 
 function fmtLiveDate(str){const d=new Date(str+'T00:00:00');const w=['日','月','火','水','木','金','土'][d.getDay()];return`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${w}）`;}
+function renderLiveSelect(){
+  const sel=document.getElementById('h-live');if(!sel)return;
+  const today=todayStr();
+  const opts=lives.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(l=>`<option value="${l.date}">${fmtLiveDate(l.date)} ${l.title}</option>`);
+  sel.innerHTML=[`<option value="${today}">今日（${fmtLiveDate(today)}）</option>`,...opts,'<option value="_other">ほかの日付を入れる</option>'].join('');
+}
 function renderLives(){
+  renderLiveSelect();
   const el=document.getElementById('live-list');
   if(!lives.length){el.innerHTML='<div class="live-empty"><div class="live-empty-icon">📅</div><div class="live-empty-msg">現在予定されている配信はありません🌸<br>お楽しみに！</div></div>';}
   else el.innerHTML=lives.map(l=>`<div class="live-card"><div class="live-date-badge">🎥 ${fmtLiveDate(l.date)}</div><div class="live-title">${l.title}</div><div class="live-time">🕐 ${l.time}</div>${l.note?`<div class="live-note">${l.note}</div>`:''}</div>`).join('');
@@ -612,37 +654,59 @@ function checkPw(){
 function logout(){document.getElementById('pw-area').style.display='block';document.getElementById('sdash').style.display='none';document.getElementById('pw-inp').value='';document.getElementById('pw-err').style.display='none';}
 function showTab(id,btn){document.querySelectorAll('.stab-pane').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.stab').forEach(el=>el.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
 function now(){return new Date().toLocaleDateString('ja-JP',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});}
-function saveClaim(){
+function todayStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function stamp(){const d=new Date();return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;}
+// ---- 🎁 渡していない人リスト ----
+function renderHandoffs(){
+  const el=document.getElementById('hand-list');if(!el)return;
+  const open=handoffs.filter(h=>h.status!=='done');
+  const cnt=document.getElementById('hand-count');if(cnt){cnt.textContent=open.length;cnt.style.display=open.length?'inline-block':'none';}
+  if(!open.length)el.innerHTML='<div class="empty">ぜんぶ渡しました🌸</div>';
+  else el.innerHTML=open.map(h=>`<div class="hand-card"><div><div class="hand-name">👤 ${h.customer_name}</div><div class="hand-info">🧸 ${h.squeeze_name}<br>📅 ${h.live_date?fmtLiveDate(h.live_date)+'のライブでゲット':'配信日なし'}</div></div><button class="hand-done" onclick="doneHandoff(${h.id})">✅ 渡した！</button></div>`).join('');
+  const rc=document.getElementById('hand-recent');
+  const done=handoffs.filter(h=>h.status==='done').slice(0,3);
+  if(rc)rc.innerHTML=done.length?'さいきん渡した人：'+done.map(h=>`<span>${h.customer_name}（${h.squeeze_name}）</span> <a href="#" onclick="undoHandoff(${h.id});return false;" style="color:#8f7be8;">もどす</a>`).join('　'):'';
+}
+async function addHandoff(){
+  const name=document.getElementById('h-name').value.trim();if(!name)return;
+  const sel=document.getElementById('h-prod');const sq=squeezes.find(s=>String(s.id)===sel.value);
+  let date=document.getElementById('h-live').value;if(date==='_other')date=document.getElementById('h-date').value||todayStr();
+  await db.from('handoffs').insert({id:Date.now(),customer_name:name,squeeze_id:sq?sq.id:null,squeeze_name:sq?`${sq.emoji} ${sq.name}`:'',live_date:date,status:'open',created_at:now()});
+  document.getElementById('h-name').value='';
+}
+async function doneHandoff(id){await db.from('handoffs').update({status:'done',done_at:now()}).eq('id',id);}
+async function undoHandoff(id){await db.from('handoffs').update({status:'open',done_at:''}).eq('id',id);}
+async function saveClaim(){
   const name=document.getElementById('c-name').value.trim();const prod=document.getElementById('c-prod').value;
   const body=document.getElementById('c-body').value.trim();const other=document.getElementById('c-other').value.trim();const stat=document.getElementById('c-stat').value;
   if(!name||!body)return;
-  claims.unshift({name,prod,body,other,stat,date:now(),id:Date.now()});
-  document.getElementById('c-name').value='';document.getElementById('c-body').value='';document.getElementById('c-other').value='';renderClaims();
+  await db.from('claims').insert({id:Date.now(),name,prod,body,other,stat,date:now()});
+  document.getElementById('c-name').value='';document.getElementById('c-body').value='';document.getElementById('c-other').value='';
 }
 function renderClaims(){
   const el=document.getElementById('claim-list');if(!claims.length){el.innerHTML='<div class="empty">まだ記録がありません🌸</div>';return;}
   el.innerHTML=claims.map(c=>`<div class="litem"><div class="litem-head"><span class="litem-ttl">${c.name}<span class="bstat ${c.stat==='done'?'bdone':'bopen'}">${c.stat==='done'?'解決済み':'対応中'}</span></span><button class="delbtn" onclick="delClaim(${c.id})">削除</button></div><div class="litem-date">${c.date}｜商品：${c.prod}</div><div class="litem-body" style="margin-top:0.25rem;">${c.body}</div>${c.other?`<div style="margin-top:0.22rem;font-size:0.7rem;color:#a89ccf;">📎 ${c.other}</div>`:''}</div>`).join('');
 }
-function delClaim(id){claims=claims.filter(c=>c.id!==id);renderClaims();}
-function saveMemo(){
+async function delClaim(id){await db.from('claims').delete().eq('id',id);}
+async function saveMemo(){
   const t=document.getElementById('m-ttl').value.trim();const b=document.getElementById('m-body').value.trim();if(!t||!b)return;
-  memos.unshift({t,b,date:now(),id:Date.now()});document.getElementById('m-ttl').value='';document.getElementById('m-body').value='';renderMemos();
+  await db.from('memos').insert({id:Date.now(),t,b,date:now()});document.getElementById('m-ttl').value='';document.getElementById('m-body').value='';
 }
 function renderMemos(){
   const el=document.getElementById('memo-list');if(!memos.length){el.innerHTML='<div class="empty">まだメモがありません🌸</div>';return;}
   el.innerHTML=memos.map(m=>`<div class="litem"><div class="litem-head"><span class="litem-ttl">${m.t}</span><button class="delbtn" onclick="delMemo(${m.id})">削除</button></div><div class="litem-date">${m.date}</div><div class="litem-body" style="margin-top:0.25rem;">${m.b}</div></div>`).join('');
 }
-function delMemo(id){memos=memos.filter(m=>m.id!==id);renderMemos();}
-function saveSale(){
+async function delMemo(id){await db.from('memos').delete().eq('id',id);}
+async function saveSale(){
   const item=document.getElementById('s-prod').value;const price=parseInt(document.getElementById('s-price').value);if(!item||!price||price<=0)return;
-  sales.unshift({item,price,date:now(),id:Date.now()});document.getElementById('s-price').value='';renderSales();
+  await db.from('sales').insert({id:Date.now(),item,price,date:stamp()});document.getElementById('s-price').value='';
 }
 function renderSales(){
-  const el=document.getElementById('sales-list');const total=sales.reduce((s,r)=>s+r.price,0);document.getElementById('s-total').textContent='¥'+total.toLocaleString();
+  const el=document.getElementById('sales-list');const ym=stamp().slice(0,7);const total=sales.filter(r=>String(r.date).startsWith(ym)).reduce((s,r)=>s+r.price,0);document.getElementById('s-total').textContent='¥'+total.toLocaleString();
   if(!sales.length){el.innerHTML='<div class="empty">まだ記録がありません🌸</div>';return;}
   el.innerHTML=sales.map(s=>`<div class="srow"><div><div style="font-size:0.76rem;color:#6a5f8a;">${s.item}</div><div style="font-size:0.62rem;color:#b3a9d9;">${s.date}</div></div><div style="display:flex;align-items:center;gap:0.45rem;"><span style="font-size:0.82rem;font-weight:600;color:#7a68d8;">¥${s.price.toLocaleString()}</span><button class="delbtn" onclick="delSale(${s.id})">削除</button></div></div>`).join('');
 }
-function delSale(id){sales=sales.filter(s=>s.id!==id);renderSales();}
+async function delSale(id){await db.from('sales').delete().eq('id',id);}
 function doSearch(){
   const q=document.getElementById('srch-inp').value.trim();
   if(!q){document.getElementById('srch-result').style.display='none';document.getElementById('no-result').style.display='none';return;}
@@ -653,7 +717,7 @@ function doSearch(){
 function searchTag(q){document.getElementById('srch-inp').value=q;doSearch();}
 
 async function init(){
-  await Promise.all([fetchSqueezes(),fetchNotices(),fetchLives(),fetchOrders()]);
+  await Promise.all([fetchSqueezes(),fetchNotices(),fetchLives(),fetchOrders(),fetchHandoffs(),fetchClaims(),fetchMemos(),fetchSales()]);
   setupRealtime();
 }
 init();
